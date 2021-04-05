@@ -5,7 +5,7 @@ public void addOrdered(){
 
 @Override
 public boolean delete(T d){
-    boolean checkDeleted = false;
+    boolean viewDeleted = false;
     DoubleNode<T> currentNode = head;
     DoubleNode<T> before = null;
     
@@ -27,5 +27,5 @@ public boolean delete(T d){
         }
     }
 
-    return checkDeleted;
+    return viewDeleted;
 }
