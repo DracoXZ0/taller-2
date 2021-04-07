@@ -1,0 +1,4 @@
+public class NodoLCD {
+    int dato;
+    NodoLCD siguiente, anterior;
+}
