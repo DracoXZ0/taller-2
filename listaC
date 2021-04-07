@@ -1,0 +1,75 @@
+public class ListaLC {
+
+    NodoLC  ultimo;
+    int tamaño;
+    public ListaLC(){
+        ultimo=null;
+    }
+    public boolean estVacia1(){
+        return ultimo==null;
+    }
+    public ListaLC insertar(int elemento){
+        NodoLC nuevo =new NodoLC(elemento);
+        if(ultimo!=null){
+            nuevo.siguiente=ultimo.siguiente;
+            ultimo.siguiente=nuevo;
+        }
+        ultimo=nuevo;
+        tamaño+=1;
+        return this;
+    }
+    public int tamañoLista(){
+        return tamaño;
+    }
+    public void mostrarLista(){
+        NodoLC auxiliar=ultimo.siguiente;
+        String cadena="";
+        do{
+            cadena+="["+auxiliar.dato+"]";
+            auxiliar=auxiliar.siguiente;
+        }while(auxiliar!=ultimo.siguiente);
+        System.out.println(cadena);
+    }
+    public void deleteFirst(){
+       NodoLC actual;
+       actual=ultimo;
+       NodoLC auxiliar=actual.siguiente;
+       if (ultimo==ultimo.siguiente){
+           ultimo=null;
+       }else{
+           if (auxiliar==ultimo){
+               ultimo=actual;
+           }
+           actual.siguiente=auxiliar.siguiente;
+       }
+       
+    }
+    public int datosLista(int indice){
+        NodoLC auxiliar=ultimo.siguiente;
+        int i=0;
+        while(i<indice){
+            auxiliar=auxiliar.siguiente;
+            i+=1;
+        }
+        return auxiliar.dato;
+    }
+    public static void main(String[] args) {
+        ListaLC lista2=new ListaLC();
+        lista2.insertar(47);
+        lista2.insertar(64);
+        lista2.insertar(71);
+        lista2.insertar(36);
+        lista2.insertar(2);
+        lista2.deleteFirst();
+        lista2.mostrarLista();
+        ListaLC lista3=new ListaLC();
+        lista3.insertar(32);
+        lista3.insertar(36);
+        lista3.insertar(1);
+        for (int i=0; i<lista3.tamañoLista(); i++){
+            lista2.insertar(lista3.datosLista(i));
+        }
+        lista2.mostrarLista();
+    }
+    
+}
